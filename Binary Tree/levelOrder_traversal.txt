@@ -18,18 +18,14 @@ class BT
 	{
 		root = null;
 	}
-	public BTNode insert(BTNode r, int data)
+	public BTNode insert(int a[], int i)
 	{
-		if(r==null)
-			r = new BTNode(data);
-		
-		else
-		{
-			if(r.right== null)
-				r.right = insert(r.right, data);
-			else
-				r.left = insert(r.left, data);
-		}
+		BTNode r;
+		if(i>=a.length)
+			return null;
+		r = new BTNode(a[i]);
+		r.left = insert(a, 2*i+1);
+		r.right = insert(a, 2*i+2);
 		return r;
 	}
 	
@@ -67,13 +63,15 @@ class Main
 		public static void main(String[] args) throws IOException 
 		{
 			BT tree = new BT();
-			System.out.println("Enter data:");
+			System.out.println("Enter No of elements:");
+			int n = in.nextInt();
+			int a[] = new int[n];
 			
-			for(int i=0; i<7; i++)
-			{
-				int data = in.nextInt();
-				tree.root = tree.insert(tree.root, data);
-			}
+			System.out.println("Enter data:");
+			for(int i=0; i<n; i++)
+				a[i] = in.nextInt();
+			tree.root = tree.insert(a, 0);
+			
 			tree.levelOrder(tree.root);
 			//out.flush();
 		//end of the code
