@@ -40,8 +40,8 @@ class BT
 		if(r!=null)
 		{
 			System.out.print(r.data+" ");
-			preOrder(r.left);
-			preOrder(r.right);
+			preOrderRecur(r.left);
+			preOrderRecur(r.right);
 		}
 	}
 	
@@ -73,6 +73,7 @@ class Main
 		{
 			BT tree = new BT();
 			System.out.println("Enter data:");
+			
 			for(int i=0; i<7; i++)
 			{
 				int data = in.nextInt();
