@@ -1,0 +1,56 @@
+import java.util.*;
+
+ 
+class Element
+{
+	public int data, order;
+	public Element(int d, int p)
+	{
+		data = d;
+		order = p;
+	}
+}
+class Stack
+{
+	public PriorityQueue<Element> q;
+	public int c;
+	public Stack()
+	{
+		q = new PriorityQueue<Element>(new Comparator<Element>(){
+			public int compare(Element x, Element y)
+			{
+				if(x.order>y.order)
+					return -1;
+				return 1;
+			}
+		});
+		c = 0;
+	}
+	public void push(int data)
+	{
+		Element e = new Element(data, c);
+		c++;
+		q.add(e);
+	}
+	public int pop()
+	{
+		Element e = q.poll();
+		c--;
+		return e.data; 
+	}
+	
+}
+class Main2
+{
+	public static void main(String args[])
+	{
+		Scanner in = new Scanner(System.in);
+		Stack s = new Stack();
+		//q.add(1);
+		s.push(1);
+		s.push(3);
+		s.push(4);
+		s.push(2);
+		System.out.println(s.pop());
+	}
+}
