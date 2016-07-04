@@ -24,7 +24,7 @@ class DisjointSet
 		int j = find(y);
 		if(i!=j)
 		{
-			S[x] = y;
+			S[i] = j;
 		}
 		else
 			return;
