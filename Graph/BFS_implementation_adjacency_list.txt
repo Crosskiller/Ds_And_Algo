@@ -1,0 +1,44 @@
+class Graph
+{
+	public ArrayList<Integer> vertices[];
+	public int vc;
+	public boolean visited[];
+	public Graph(int n)
+	{
+		vc = n;
+		vertices = new ArrayList[vc];
+		for(int i=0; i<vc; i++)
+			vertices[i] = new ArrayList<Integer>();
+		visited = new boolean[n];
+	}
+	public void addEdge(int a, int b)
+	{
+		vertices[a-1].add(b);
+	}
+	public int getAdjVertex(int a)
+	{
+		for(int i=0; i<vertices[a].size(); i++)
+		{
+			int v = vertices[a].get(i);
+			if(!visited[v])
+				return v;
+		}
+		return -1;
+	}
+	public void bfs()
+	{
+		ArrayDeque<Integer> q = new ArrayDeque<Integer>();
+		q.add(0);
+		visited[0] = true;
+		while(!q.isEmpty())
+		{
+			int v = q.poll();
+			int v1;
+			while((v1 = getAdjVertex(v))!=-1)
+			{
+				q.add(v1);
+				visited[v1] = true;
+			}
+		}
+	}
+}
