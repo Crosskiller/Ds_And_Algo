@@ -13,7 +13,7 @@ class Graph
 	}
 	public void addEdge(int a, int b)
 	{
-		vertices[a-1].add(b);
+		vertices[a-1].add(b-1);
 	}
 	public int getAdjVertex(int a)
 	{
