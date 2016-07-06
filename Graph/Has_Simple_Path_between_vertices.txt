@@ -52,7 +52,7 @@ class Graph
 	{
 		if(s==d)
 			return true;
-		for(int i=0; i<vc; i++)      // if graph is not connected
+		for(int i=0; i<vc; i++)      
 		{
 			if(matrix[s-1][i]==1 && !visited[i])
 			{
