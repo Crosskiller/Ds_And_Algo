@@ -1,0 +1,54 @@
+import java.util.*;
+
+
+class Main
+{
+		
+	public static void main(String[] args) 
+		{
+			Scanner in = new Scanner(System.in);
+			int a[] = {4,2,1,5,3,6}; // output format: A<B>C<D>E<F
+			for(int i=0; i<a.length; i+=2)
+			{
+				if(i>0 &&a[i]<a[i-1])
+				{
+					int t = a[i];
+					a[i] = a[i-1];
+					a[i-1] = t;
+				}
+				if(i<a.length-1 &&a[i]<a[i+1])
+				{
+					int t = a[i];
+					a[i] = a[i+1];
+					a[i+1] = t;
+				}
+			}
+			for(int i=0; i<a.length; i++)
+				System.out.print(a[i]+" ");
+		}
+}
+
+    
+    
+    
+    
+    
+    
+ 
+    
+ 
+                
+                
+        
+            
+            
+ 
+  
+ 
+  
+  
+ 
+ 
+   
+ 
+     
