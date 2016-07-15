@@ -1,0 +1,53 @@
+import java.util.*;
+
+class Main
+{
+	public static boolean binarySearch(int a[], int item)
+	{
+		int i = 0, j = a.length-1;
+		while(i<=j)
+		{
+			int mid = i+(j-i)/2;
+			if(a[mid]==item)
+				return true;
+			else if(a[mid]>item)
+				j = mid-1;
+			else
+				i = mid+1;
+		}
+		return false;
+	}
+	public static void main(String[] args) 
+		{
+			Scanner in = new Scanner(System.in);
+			int a[] = {4,2,1,5,3,6};
+			Arrays.sort(a);
+			System.out.println(binarySearch(a,3));
+			System.out.println(binarySearch(a,0));
+		}
+}
+
+    
+    
+    
+    
+    
+    
+ 
+    
+ 
+                
+                
+        
+            
+            
+ 
+  
+ 
+  
+  
+ 
+ 
+   
+ 
+     

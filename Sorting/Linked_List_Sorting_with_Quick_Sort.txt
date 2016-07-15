@@ -1,0 +1,161 @@
+import java.util.*;
+
+class Node
+{
+	public int data;
+	public Node next;
+	public Node(int data)
+	{
+		this.data = data;
+		next = null;
+	}
+}
+
+class LinkedList
+{
+	public Node head;
+	public LinkedList()
+	{
+		head = null;
+	}
+	public void add(int item)
+	{
+		Node temp = new Node(item);
+		Node t = head;
+		if(t==null)
+		{
+			t = temp;
+			head = t;
+		}
+		else
+		{
+			while(t.next!=null)
+				t = t.next;
+			t.next = temp;
+		}
+	}
+	public Node append(int current, Node HEAD)
+	{
+		Node c = new Node(current);
+		Node s = HEAD;
+		if(s==null)
+		{
+			s = c;
+			HEAD = s;
+		}
+		else
+		{
+			while(s.next!=null)
+				s = s.next;
+			
+			s.next = c;
+		}
+		return HEAD;
+	}
+	
+	public Node join(Node h1, Node h2)
+	{
+		Node s = h1;
+		while(s.next!=null)
+			s = s.next;
+		
+		s.next = h2;
+		return h1;
+	}
+	
+	public Node qSort(Node first)
+	{
+		Node lesHEAD  = null,equHEAD  = null, larHEAD  = null;
+		Node current = first;
+		int pivot = current.data;
+		while(current!=null)
+		{
+			if(pivot>current.data)
+				lesHEAD = append(current.data, lesHEAD);
+			
+			else if(pivot<current.data)
+				larHEAD = append(current.data, larHEAD);
+			
+			else
+				equHEAD = append(current.data, equHEAD);
+			
+			current = current.next;
+		}
+		if(lesHEAD==null && larHEAD==null)
+			return first;
+		
+		if(lesHEAD==null)
+		{
+			larHEAD = qSort(larHEAD);
+			lesHEAD = join(equHEAD, larHEAD);
+		}
+		else if(larHEAD==null)
+		{
+			lesHEAD = qSort(lesHEAD);
+			lesHEAD = join(lesHEAD, equHEAD);
+		}
+		else
+		{
+			lesHEAD = qSort(lesHEAD);
+			larHEAD = qSort(larHEAD);
+			lesHEAD = join(lesHEAD, equHEAD);
+			lesHEAD = join(lesHEAD, larHEAD);
+		}
+		first = lesHEAD;
+		return first;
+	}
+	
+	public void display()
+	{
+		Node t = head;
+		while(t!=null)
+		{
+			System.out.print(t.data+" ");
+			t = t.next;
+		}
+	}
+}
+
+class Main2
+{
+		
+	public static void main(String[] args) 
+		{
+			Scanner in = new Scanner(System.in);
+			LinkedList list = new LinkedList();
+			list.add(4);
+			list.add(2);
+			list.add(1);
+			list.add(5);
+			list.add(3);
+			list.add(6);
+			
+			list.head = list.qSort(list.head);
+			list.display();
+		}
+}
+
+    
+    
+    
+    
+    
+    
+ 
+    
+ 
+                
+                
+        
+            
+            
+ 
+  
+ 
+  
+  
+ 
+ 
+   
+ 
+     
