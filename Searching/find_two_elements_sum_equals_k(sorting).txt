@@ -1,0 +1,58 @@
+import java.util.*;
+
+class Main
+{
+	public static boolean search(int a[], int k)
+	{
+		int n = a.length;
+		Arrays.sort(a);
+		int i=0, j= n-1;
+		while(i<j)
+		{
+			int val = a[i]+a[j];
+			if(val==k)
+			{
+				System.out.print(a[i]+" && "+a[j]+" ");
+				return true;
+			}
+			else if(val>k)
+				j--;
+			else
+				i++;
+		}
+		return false;
+	}
+	public static void main(String[] args) 
+		{
+			Scanner in = new Scanner(System.in);
+			int a[] = {4,1,7,3,9,2,6,8};
+			int k = 17; //18
+			
+			System.out.println(search(a,k));
+		}
+}
+
+    
+    
+    
+    
+    
+    
+ 
+    
+ 
+                
+                
+        
+            
+            
+ 
+  
+ 
+  
+  
+ 
+ 
+   
+ 
+     

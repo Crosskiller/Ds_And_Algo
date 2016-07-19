@@ -1,0 +1,54 @@
+import java.util.*;
+
+class Main
+{
+	public static boolean search(int a[], int k)
+	{
+		int n = a.length;
+		HashMap<Integer,Integer> hmp = new HashMap<Integer, Integer>();
+		for(int i=0; i<n; i++)
+		{
+			if(hmp.containsKey(a[i]))
+			{
+				System.out.println(a[hmp.get(a[i])]+" && "+a[i]+" ");
+				return true;
+			}
+			else
+				hmp.put(k-a[i], i);
+		}
+		return false;
+	}
+	public static void main(String[] args) 
+		{
+			Scanner in = new Scanner(System.in);
+			int a[] = {4,1,7,3,9,2,6,8};
+			int k = 17; //18
+			
+			System.out.println(search(a,k));
+		}
+}
+
+    
+    
+    
+    
+    
+    
+ 
+    
+ 
+                
+                
+        
+            
+            
+ 
+  
+ 
+  
+  
+ 
+ 
+   
+ 
+     
