@@ -1,0 +1,77 @@
+import java.util.*;
+
+class Main
+{
+	public static String dupli_remove_linear(String s)
+	{
+		char ch[] = s.toCharArray();
+		int n = ch.length;
+		for(int i=0; i<n; i++)
+		{
+			for(int j = i+1; j<n; j++)
+			{
+				if(ch[i]==ch[j])
+				{
+					while(ch[n-1]==ch[j])
+						n--;
+					ch[j] = ch[--n];
+				}
+			}
+		}
+		return new String(ch,0,n);
+	}
+	
+	public static String dupli_remove_sorting(String s)
+	{
+		char ch[] = s.toCharArray();
+		Arrays.sort(ch);
+		int i=0,tail=0;
+		while(i<ch.length)
+		{
+			int j;
+			for(j=i+1; j<ch.length; j++)
+			{
+				if(ch[i]!=ch[j])
+					break;
+				else
+				{
+					ch[j] = ch[tail++];
+				}
+			}
+			i = j;
+		}
+		return new String(ch,tail,ch.length-tail);
+	}
+	
+	public static void main(String[] args) 
+	{
+		String s = "laliteshbansal";
+		System.out.println(dupli_remove_linear(s));
+		System.out.println(dupli_remove_sorting(s));
+	}
+}
+
+    
+    
+    
+    
+    
+    
+ 
+    
+ 
+                
+                
+        
+            
+            
+ 
+  
+ 
+  
+  
+ 
+ 
+   
+ 
+     
