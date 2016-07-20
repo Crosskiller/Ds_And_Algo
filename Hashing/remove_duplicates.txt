@@ -53,8 +53,7 @@ class Main
 			{
 				while(ch[i]==ch[n-1])
 					n--;
-				ch[i] = ch[--n];
-				i--;
+				ch[i--] = ch[--n];                //swap last element which is not same of current element
 			}
 			else
 				tb.add(ch[i]);
