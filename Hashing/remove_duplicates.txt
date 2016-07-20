@@ -42,12 +42,31 @@ class Main
 		}
 		return new String(ch,tail,ch.length-tail);
 	}
-	
+	public static String dupli_remove_hashing(String s)
+	{
+		HashSet<Character> tb = new HashSet<Character>();
+		char ch[] = s.toCharArray();
+		int n = ch.length;
+		for(int i=0; i<n; i++)
+		{
+			if(tb.contains(ch[i]))
+			{
+				while(ch[i]==ch[n-1])
+					n--;
+				ch[i] = ch[--n];
+				i--;
+			}
+			else
+				tb.add(ch[i]);
+		}
+		return new String(ch,0,n+1);
+	}
 	public static void main(String[] args) 
 	{
 		String s = "laliteshbansal";
 		System.out.println(dupli_remove_linear(s));
 		System.out.println(dupli_remove_sorting(s));
+		System.out.println(dupli_remove_hashing(s));
 	}
 }
 
