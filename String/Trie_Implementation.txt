@@ -1,0 +1,59 @@
+import java.util.*;
+
+class Trie
+{
+	private static final int ALPHABETS = 26;
+	private Trie links[];
+	private boolean isEndOfString;
+	public Trie()
+	{
+		links = new Trie[ALPHABETS];
+		isEndOfString = false;
+	}
+	public void addString(String s)
+	{
+		Trie t = this;
+		int n = s.length();
+		for(int i=0; i<n; i++)
+		{
+			int index = s.charAt(i)-'a';
+			if(t.links[index]==null)
+				t.links[index] = new Trie();
+			t = t.links[index];
+		}
+		t.isEndOfString = true;
+	}
+	public boolean searchString(String s)
+	{
+		Trie t = this;
+		int n = s.length();
+		for(int i=0; i<n; i++)
+		{
+			int index = s.charAt(i)-'a';
+			if(t.links[index]==null)
+				return false;
+			t = t.links[index];
+		}
+		if(t.isEndOfString)
+			return true;
+		else
+			return false;       //return t.isEndOfString;
+	}
+	
+}
+
+class Main
+{
+	
+	public static void main(String[] args) 
+	{
+		Trie t = new Trie();
+		t.addString("lalitesh");
+		t.addString("bansal");
+		t.addString("golu");
+		t.addString("cross");
+		t.addString("killer");
+		System.out.println((t.searchString("cross"))?"Successful!":"Not Successful!");
+	}
+}
+    

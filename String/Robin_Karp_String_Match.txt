@@ -1,0 +1,36 @@
+import java.util.*;
+
+class Main
+{
+	public static int asciiValue(char p[], int m)
+	{
+		int val=0;
+		for(int i=0; i<m; i++)
+		{
+			val+=p[i];
+		}
+		//System.out.println(val);
+		return val;
+	}
+	public static boolean RobinKarpStringMatch(String T, String P)
+	{
+		char t[] = T.toCharArray();
+		char p[] = P.toCharArray();
+		int n = t.length, m = p.length;
+		int pVal = asciiValue(p, m);
+		int tVal = asciiValue(t, m);
+		for(int i=1; i<=n-m; i++)
+		{
+			if(tVal==pVal)
+				return true;
+			tVal = tVal-t[i-1]+t[i+m-1];
+		}
+		return false;
+	}
+	public static void main(String[] args) 
+	{
+		String T = "laliteshbansal";
+		String P = "esh";
+		System.out.println((RobinKarpStringMatch(T, P))?"Matched!":"Not Matched!");
+	}
+}

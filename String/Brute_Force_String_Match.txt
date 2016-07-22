@@ -1,0 +1,27 @@
+import java.util.*;
+
+class Main
+{
+	public static boolean BruteForceStringMatch(String T, String P)
+	{
+		char t[] = T.toCharArray();
+		char p[] = P.toCharArray();
+		int n = t.length, m = p.length;
+		for(int i=0; i<n-m; i++)
+		{
+			int j=0;
+			while(j<m && t[i+j]==p[j])
+				j++;
+			if(j==m)
+				return true;
+		}
+		return false;
+	}
+	public static void main(String[] args) 
+	{
+		String T = "laliteshbansal";
+		String P = "esh";
+		
+		System.out.println((BruteForceStringMatch(T,P))?"Matched!":"Not Matched!");
+	}
+}

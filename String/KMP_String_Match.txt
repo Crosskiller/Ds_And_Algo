@@ -1,0 +1,60 @@
+import java.util.*;
+
+class Main
+{
+	public static int[] prefixArr(char p[])
+	{
+		int m = p.length;
+		int pre[] = new int[m];
+		pre[0] = 0;
+		int i=1, j=0;
+		while(i<m)
+		{
+			if(p[i]==p[j])
+			{
+				pre[i]=j+1;
+				i++;
+				j++;
+			}
+			else if(j>0)
+				j = pre[j-1];
+			else
+				pre[i++] = 0;
+		}
+		return pre;
+	}
+	public static boolean KMPStringMatch(String T, String P)
+	{
+		char t[] = T.toCharArray();
+		char p[] = P.toCharArray();
+		int n = t.length;
+		int m = p.length;
+		int pre[] = prefixArr(p);
+		int i=0, j= 0;
+		while(i<n)
+		{
+			if(t[i]==p[j])
+			{
+				if(j==m-1)
+					return true;
+				i++;
+				j++;
+			}
+			else if(j>0)
+			{
+				j = pre[j-1];
+				i++;
+			}
+			else
+				i++;
+		}
+		return false;
+	}
+	public static void main(String[] args) 
+	{
+		String T = "laliteshbansal";
+		String P = "esh";
+		System.out.println((KMPStringMatch(T, P))?"Matched!":"Not Matched!");
+	}
+}
+    
