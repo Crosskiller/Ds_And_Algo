@@ -1,0 +1,26 @@
+import java.util.*;
+
+
+class Main
+{
+	public static void anagram(String s)
+	{
+		permutation("", s);
+	}
+	public static void permutation(String prefix, String s)
+	{
+		int n = s.length();
+		System.out.println(prefix);
+		for(int i=0; i<n; i++)
+		{
+			permutation(prefix+s.charAt(i),s.substring(i+1));
+		}
+	}
+	
+	public static void main(String[] args) 
+	{
+		String s = "abc";
+		anagram(s);
+	}
+}
+    
