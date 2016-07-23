@@ -1,0 +1,24 @@
+import java.util.*;
+
+
+class Main
+{
+	
+	
+	public static void main(String[] args) 
+	{
+		String s = "lalitesh bansal is Cross Killer";
+		StringTokenizer st = new StringTokenizer(s," ");
+		Stack<String> stack = new Stack<String>();
+		int k = 0;
+		while(st.hasMoreTokens())
+			stack.push(st.nextToken());
+		while(!stack.isEmpty())
+		{
+			System.out.print(stack.pop()+" ");
+		}
+		
+		
+	}
+}
+    
