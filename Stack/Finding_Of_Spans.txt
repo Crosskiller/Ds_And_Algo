@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Main
+{
+	public static int[] span(int a[])
+	{
+		Stack<Integer> st = new Stack<Integer>();
+		int span[] = new int[a.length];
+		for(int i=0; i<a.length; i++)
+		{
+			while(!st.isEmpty() && a[i]>a[st.peek()])
+				st.pop();
+			if(!st.isEmpty())
+				span[i] = i-st.peek();
+			else
+				span[i] = i+1;
+			st.push(i);
+		}
+		return span;
+	}
+	public static void main(String[] args) 
+		{
+			Scanner in = new Scanner(System.in);
+			int a[] = {6,2,3,4,1,5,7};
+			int b[] = span(a);
+			for(int i=0; i<a.length; i++)
+				System.out.print(b[i]+" ");
+		}
+}
+   
